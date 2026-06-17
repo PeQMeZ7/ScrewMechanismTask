@@ -4,6 +4,17 @@
 #include "Components/ActorComponent.h"
 #include "ScrewRotatorComponent.generated.h"
 
+/*
+ * AI Assistance Disclosure:
+ * This component was developed by the student with AI assistance for code organization,
+ * Unreal Engine reflection macro usage, editor-exposed property structure,
+ * Blueprint event structure, and bonus feature planning.
+ *
+ * The final implementation was reviewed, compiled, tested, and adjusted by the student
+ * inside Unreal Engine.
+ */
+
+// Defines the local axis used for screw rotation and screw depth movement.
 UENUM(BlueprintType)
 enum class EScrewAxis : uint8
 {
@@ -12,6 +23,7 @@ enum class EScrewAxis : uint8
     Z UMETA(DisplayName = "Z")
 };
 
+// Blueprint-assignable delegate used for limit events.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FScrewLimitReachedSignature);
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -33,6 +45,9 @@ public:
     ) override;
 
 public:
+    // Editor-exposed screw configuration parameters.
+    // TODO (Future Improvement): Add editable input key settings instead of hardcoding E and Q in C++.
+    // TODO (Future Improvement): Add an option for screw handedness, such as clockwise or counter-clockwise tightening.
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Screw", meta = (ClampMin = "0.0"))
     float RotationSpeed;
 
@@ -45,6 +60,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Screw")
     EScrewAxis RotationAxis;
 
+    // Bonus feature settings for smooth stopping near the screw limits.
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Screw|Bonus")
     bool bUseSmoothStop;
 
@@ -54,12 +70,14 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Screw|Bonus", meta = (ClampMin = "0.01", ClampMax = "1.0"))
     float MinimumSmoothSpeedMultiplier;
 
+    // Bonus feature: Blueprint events that notify when the screw reaches its limits.
     UPROPERTY(BlueprintAssignable, Category = "Screw|Events")
     FScrewLimitReachedSignature OnScrewFullyTightened;
 
     UPROPERTY(BlueprintAssignable, Category = "Screw|Events")
     FScrewLimitReachedSignature OnScrewFullyLoosened;
 
+    // Bonus feature: Helper functions callable from Blueprint.
     UFUNCTION(BlueprintCallable, Category = "Screw")
     void ResetScrew();
 

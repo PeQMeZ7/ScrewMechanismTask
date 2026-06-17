@@ -334,3 +334,9 @@ Bu proje tesliminde aşağıdaki içerikler bulunmaktadır:
 - README dokümanı
 - 1-2 dakikalık ekran videosu veya demo video linki
 - GitHub repo bağlantısı veya proje arşivi
+
+## Yapay Zeka Desteği Açıklaması
+
+Geliştirme sürecinde, kod organizasyonu, Unreal Engine C++ yapısı, Aktör Bileşen tasarımı, Blueprint olay planlaması, sorunsuz durdurma mantığı ve dokümantasyon desteği için yapay zeka desteği kullanılmıştır.
+
+Son kod, öğrenci tarafından Unreal Engine'de incelenmiş, derlenmiş, test edilmiş ve ayarlanmıştır.
